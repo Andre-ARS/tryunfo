@@ -5,7 +5,7 @@ class Form extends Component {
   render() {
     return (
       <form>
-        <Inputs />
+        <Inputs formProps={ this.props } />
       </form>
     );
   }
