@@ -114,6 +114,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      data,
     }, onInputChange, onSaveButtonClick } = this;
 
     return (
@@ -142,6 +143,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          data.map((info) => <Card { ...info } key={ cardName } />)
+        }
       </main>
     );
   }
