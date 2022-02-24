@@ -1,0 +1,23 @@
+.form-container {
+  background-color: gray;
+  padding: 30px;
+  width: 45%;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 70px auto;
+}
+
+.label {
+  margin: 10px;
+  width: 100%;
+}
