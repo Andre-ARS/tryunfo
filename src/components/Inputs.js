@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import { BsFillXCircleFill } from 'react-icons/bs';
 
 class Inputs extends Component {
   render() {
@@ -54,6 +55,8 @@ class Inputs extends Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="att-2" className="label">
@@ -65,6 +68,8 @@ class Inputs extends Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="att-3" className="label">
@@ -76,6 +81,8 @@ class Inputs extends Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="image" className="label">
