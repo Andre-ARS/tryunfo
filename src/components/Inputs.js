@@ -16,7 +16,9 @@ class Inputs extends Component {
         cardRare,
         cardTrunfo,
         isSaveButtonDisabled,
-        onSaveButtonClick },
+        onSaveButtonClick,
+        hasTrunfo,
+      },
     } = this.props;
 
     return (
@@ -105,22 +107,32 @@ class Inputs extends Component {
             onChange={ onInputChange }
             data-testid="rare-input"
           >
-            <option value="normal" key="normal">normal</option>
-            <option value="raro" key="raro">raro</option>
-            <option value="muito raro" key="muito raro">muito raro</option>
+            <option value="normal" key="normal">
+              normal
+            </option>
+            <option value="raro" key="raro">
+              raro
+            </option>
+            <option value="muito raro" key="muito raro">
+              muito raro
+            </option>
           </select>
         </label>
-        <label htmlFor="trunfo" className="label">
-          <input
-            type="checkbox"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            id="trunfo"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-          />
-          Super Trunfo
-        </label>
+        {hasTrunfo ? (
+          <p>Você já tem um Super Trunfo em seu baralho</p>
+        ) : (
+          <label htmlFor="trunfo" className="label">
+            <input
+              type="checkbox"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              id="trunfo"
+              name="cardTrunfo"
+              data-testid="trunfo-input"
+            />
+            Super Trunfo
+          </label>
+        )}
         <button
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
@@ -148,6 +160,7 @@ Inputs.propTypes = {
     isSaveButtonDisabled: PropTypes.bool.isRequired,
     onInputChange: PropTypes.func.isRequired,
     onSaveButtonClick: PropTypes.func.isRequired,
+    hasTrunfo: PropTypes.bool,
   }).isRequired,
 };
 

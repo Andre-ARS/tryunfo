@@ -3,8 +3,6 @@ import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
 
-const data = [];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +15,10 @@ class App extends React.Component {
       cardAttr3: '',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
-      data,
+      data: [],
     };
 
     this.inputsValidation = this.inputsValidation.bind(this);
@@ -44,6 +43,7 @@ class App extends React.Component {
     const { state } = this;
 
     this.setState((prev) => ({ data: [...prev.data, state] }));
+    if (state.cardTrunfo) this.setState({ hasTrunfo: true });
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -52,7 +52,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
       isSaveButtonDisabled: true,
     });
   }
@@ -113,6 +113,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     }, onInputChange, onSaveButtonClick } = this;
 
     return (
@@ -127,6 +128,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ onSaveButtonClick }
         />
