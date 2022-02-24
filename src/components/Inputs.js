@@ -19,23 +19,25 @@ class Inputs extends Component {
     } = this.props;
 
     return (
-      <>
-        <label htmlFor="card-name">
+      <section className="inputs-container">
+        <label htmlFor="card-name" className="label">
           Nome
+          <br />
           <input
             type="text"
             id="card-name"
-            name="card-name"
+            name="cardName"
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description">
+        <label htmlFor="description" className="label">
           Descrição
+          <br />
           <textarea
             id="description"
-            name="description"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -43,55 +45,55 @@ class Inputs extends Component {
             rows="10"
           />
         </label>
-        <label htmlFor="att-1">
+        <label htmlFor="att-1" className="label">
           Attr 1
           <input
             type="number"
             id="att-1"
-            name="att-1"
+            name="cardAttr1"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="att-2">
+        <label htmlFor="att-2" className="label">
           Attr 2
           <input
             type="number"
             id="att-2"
-            name="att-2"
+            name="cardAttr2"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="att-3">
+        <label htmlFor="att-3" className="label">
           Attr 3
           <input
             type="number"
             id="att-3"
-            name="att-3"
+            name="cardAttr3"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="image">
+        <label htmlFor="image" className="label">
           Imagem
           <input
             type="text"
             id="image"
-            name="image"
+            name="cardImage"
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="rarity">
+        <label htmlFor="rarity" className="label">
           Raridade
           <select
             id="rarity"
-            name="rarity"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
             data-testid="rare-input"
@@ -101,13 +103,13 @@ class Inputs extends Component {
             <option value="muito raro" key="muito raro">muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo">
+        <label htmlFor="trunfo" className="label">
           <input
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
             id="trunfo"
-            name="trunfo"
+            name="cardTrunfo"
             data-testid="trunfo-input"
           />
           Super Trunfo
@@ -120,9 +122,8 @@ class Inputs extends Component {
           data-testid="save-button"
         >
           Salvar
-
         </button>
-      </>
+      </section>
     );
   }
 }
