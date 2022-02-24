@@ -3,6 +3,8 @@ import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
 
+const data = [];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,12 +19,14 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: '',
       isSaveButtonDisabled: true,
+      data,
     };
 
     this.inputsValidation = this.inputsValidation.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.attrValidation = this.attrValidation.bind(this);
     this.saveValidation = this.saveValidation.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -33,6 +37,24 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.saveValidation);
+  }
+
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const { state } = this;
+
+    this.setState((prev) => ({ data: [...prev.data, state] }));
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: '',
+      isSaveButtonDisabled: true,
+    });
   }
 
   inputsValidation() {
@@ -91,7 +113,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-    }, onInputChange } = this;
+    }, onInputChange, onSaveButtonClick } = this;
 
     return (
       <main className="main-container">
@@ -106,6 +128,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
