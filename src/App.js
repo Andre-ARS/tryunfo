@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
+import Deck from './components/Deck';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       data: [],
+      nameFilter: '',
     };
 
     this.inputsValidation = this.inputsValidation.bind(this);
@@ -124,6 +126,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       hasTrunfo,
       data,
+      nameFilter,
     }, onInputChange, onSaveButtonClick, removeCard } = this;
 
     return (
@@ -155,21 +158,26 @@ class App extends React.Component {
             classe="card-preview"
           />
         </section>
-        {
-          data.map((info) => (
-            <div className="card" key={ info.cardName }>
-              <Card { ...info } key={ info.cardName } />
-              <button
-                type="button"
-                data-testid="delete-button"
-                key={ info.cardName }
-                onClick={ () => removeCard(info.cardName, info.cardTrunfo) }
-              >
-                Excluir
-              </button>
-            </div>))
-        }
-
+        <section className="deck">
+          <h2>Cartas Salvas</h2>
+          <Deck onInputChange={ onInputChange } />
+          <div className="card">
+            {data.filter((card) => card.cardName.includes(nameFilter))
+              .map((info) => (
+                <>
+                  <Card { ...info } key={ info.cardName } classe="card-deck" />
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    key={ info.cardName }
+                    onClick={ () => removeCard(info.cardName, info.cardTrunfo) }
+                  >
+                    Excluir
+                  </button>
+                </>
+              ))}
+          </div>
+        </section>
       </main>
     );
   }
