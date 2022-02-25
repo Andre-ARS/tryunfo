@@ -115,13 +115,13 @@ class Inputs extends Component {
             className="input"
           >
             <option value="normal" key="normal">
-              normal
+              Normal
             </option>
             <option value="raro" key="raro">
-              raro
+              Raro
             </option>
             <option value="muito raro" key="muito raro">
-              muito raro
+              Muito Raro
             </option>
           </select>
         </label>

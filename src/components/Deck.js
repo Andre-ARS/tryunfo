@@ -17,6 +17,19 @@ class Deck extends Component {
             onChange={ onInputChange }
           />
         </label>
+        <label htmlFor="filter-rare">
+          <select
+            name="filterRare"
+            id="filter-rare"
+            data-testid="rare-filter"
+            onChange={ onInputChange }
+          >
+            <option value="''" key="all">Todas</option>
+            <option value="normal" key="normal">Normal</option>
+            <option value="raro" key="rare">Raro</option>
+            <option value="muito raro" key="very rare">Muito Raro</option>
+          </select>
+        </label>
       </div>
     );
   }

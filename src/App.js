@@ -21,6 +21,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       data: [],
       nameFilter: '',
+      rareFilter: '',
     };
 
     this.inputsValidation = this.inputsValidation.bind(this);
@@ -127,6 +128,7 @@ class App extends React.Component {
       hasTrunfo,
       data,
       nameFilter,
+      rareFilter,
     }, onInputChange, onSaveButtonClick, removeCard } = this;
 
     return (
@@ -161,15 +163,16 @@ class App extends React.Component {
         <section className="deck">
           <h2>Cartas Salvas</h2>
           <Deck onInputChange={ onInputChange } />
-          <div className="card">
+          <div className="card" key="card234">
             {data.filter((card) => card.cardName.includes(nameFilter))
+              .filter((card) => card.cardRare.match(rareFilter))
               .map((info) => (
                 <>
-                  <Card { ...info } key={ info.cardName } classe="card-deck" />
+                  <Card { ...info } classe="card-deck" />
                   <button
                     type="button"
                     data-testid="delete-button"
-                    key={ info.cardName }
+                    key={ info.cardName + 2 }
                     onClick={ () => removeCard(info.cardName, info.cardTrunfo) }
                   >
                     Excluir

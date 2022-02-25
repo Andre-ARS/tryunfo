@@ -12,20 +12,33 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      key,
       classe,
     } = this.props;
 
     return (
-      <div key={ key } className={ classe }>
-        <h3 data-testid="name-card">{cardName}</h3>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <p data-testid="rare-card">{cardRare}</p>
-        {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
+      <div key={ `${cardName}a` } className={ classe }>
+        <h3 data-testid="name-card" key={ `${cardName}b` }>{cardName}</h3>
+        <img
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+          key={ `${cardName}c` }
+        />
+        <p data-testid="description-card" key={ `${cardName}d` }>{cardDescription}</p>
+        <p data-testid="attr1-card" key={ `${cardName}e` }>{cardAttr1}</p>
+        <p data-testid="attr2-card" key={ `${cardName}f` }>{cardAttr2}</p>
+        <p data-testid="attr3-card" key={ `${cardName}g` }>{cardAttr3}</p>
+        <p data-testid="rare-card" key={ `${cardName}h` }>{cardRare}</p>
+        {cardTrunfo
+         && (
+           <p
+             data-testid="trunfo-card"
+             key={ `${cardName}i` }
+           >
+             Super Trunfo
+
+           </p>
+         )}
       </div>
     );
   }
@@ -40,7 +53,6 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  key: PropTypes.string.isRequired,
   classe: PropTypes.string.isRequired,
 };
 
