@@ -109,6 +109,7 @@ class App extends React.Component {
     if (trunfo) this.setState({ hasTrunfo: false });
     this.setState(({ data: data.filter((info) => info.cardName !== name) }));
   }
+  // a função removeCard foi feita com base no código da aula 11.2
 
   render() {
     const { state: {
@@ -151,6 +152,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            classe="card-preview"
           />
         </section>
         {

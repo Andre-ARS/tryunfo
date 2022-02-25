@@ -13,10 +13,11 @@ class Card extends Component {
       cardRare,
       cardTrunfo,
       key,
+      classe,
     } = this.props;
 
     return (
-      <div key={ key }>
+      <div key={ key } className={ classe }>
         <h3 data-testid="name-card">{cardName}</h3>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{cardDescription}</p>
@@ -24,7 +25,7 @@ class Card extends Component {
         <p data-testid="attr2-card">{cardAttr2}</p>
         <p data-testid="attr3-card">{cardAttr3}</p>
         <p data-testid="rare-card">{cardRare}</p>
-        { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
+        {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
       </div>
     );
   }
@@ -40,6 +41,7 @@ Card.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   key: PropTypes.string.isRequired,
+  classe: PropTypes.string.isRequired,
 };
 
 export default Card;

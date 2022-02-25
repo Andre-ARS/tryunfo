@@ -33,6 +33,7 @@ class Inputs extends Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            className="input"
           />
         </label>
         <label htmlFor="description" className="label">
@@ -46,6 +47,7 @@ class Inputs extends Component {
             onChange={ onInputChange }
             cols="30"
             rows="10"
+            className="input description"
           />
         </label>
         <label htmlFor="att-1" className="label">
@@ -59,6 +61,7 @@ class Inputs extends Component {
             onChange={ onInputChange }
             min="0"
             max="90"
+            className="attr"
           />
         </label>
         <label htmlFor="att-2" className="label">
@@ -72,6 +75,7 @@ class Inputs extends Component {
             onChange={ onInputChange }
             min="0"
             max="90"
+            className="attr"
           />
         </label>
         <label htmlFor="att-3" className="label">
@@ -85,6 +89,7 @@ class Inputs extends Component {
             onChange={ onInputChange }
             min="0"
             max="90"
+            className="attr"
           />
         </label>
         <label htmlFor="image" className="label">
@@ -96,6 +101,7 @@ class Inputs extends Component {
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            className="input"
           />
         </label>
         <label htmlFor="rarity" className="label">
@@ -106,6 +112,7 @@ class Inputs extends Component {
             value={ cardRare }
             onChange={ onInputChange }
             data-testid="rare-input"
+            className="input"
           >
             <option value="normal" key="normal">
               normal
@@ -119,7 +126,7 @@ class Inputs extends Component {
           </select>
         </label>
         {hasTrunfo ? (
-          <p>Você já tem um Super Trunfo em seu baralho</p>
+          <p className="label">Você já tem um Super Trunfo em seu baralho</p>
         ) : (
           <label htmlFor="trunfo" className="label">
             <input
@@ -129,6 +136,7 @@ class Inputs extends Component {
               id="trunfo"
               name="cardTrunfo"
               data-testid="trunfo-input"
+              className="check"
             />
             Super Trunfo
           </label>
@@ -139,6 +147,7 @@ class Inputs extends Component {
           type="submit"
           name="save"
           data-testid="save-button"
+          className="save-button"
         >
           Salvar
         </button>
