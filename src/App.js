@@ -22,6 +22,7 @@ class App extends React.Component {
       data: [],
       nameFilter: '',
       rareFilter: '',
+      trunfoFilter: false,
     };
 
     this.inputsValidation = this.inputsValidation.bind(this);
@@ -30,12 +31,14 @@ class App extends React.Component {
     this.saveValidation = this.saveValidation.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.removeCard = this.removeCard.bind(this);
+    this.filterHandler = this.filterHandler.bind(this);
   }
 
   onInputChange({ target }) {
     const { name, type, checked } = target;
     let { value } = target;
     if (type === 'checkbox') value = checked;
+    if (value === 'todas') value = '';
 
     this.setState({
       [name]: value,
@@ -69,9 +72,9 @@ class App extends React.Component {
       cardRare,
     } } = this;
     const states = [cardName, cardDescription, cardImage, cardRare];
-    const filtredStates = states.filter((state) => state !== '');
+    const filtredStates = states.every((state) => state !== '');
 
-    if (filtredStates.length === states.length) return false;
+    if (filtredStates) return false;
 
     return true;
   }
@@ -85,11 +88,11 @@ class App extends React.Component {
     const max = 90;
     const sumMax = 210;
     const atributtes = [cardAttr1, cardAttr2, cardAttr3];
-    const filtred = atributtes.filter((attr) => attr >= 0 && attr <= max && attr !== '');
+    const filtred = atributtes.every((attr) => attr >= 0 && attr <= max && attr !== '');
     const sum = atributtes.map((attr) => parseFloat(attr))
       .reduce((acumulator, current) => acumulator + current);
 
-    if (filtred.length === atributtes.length && sum <= sumMax) return false;
+    if (filtred && sum <= sumMax) return false;
 
     return true;
   }
@@ -114,6 +117,15 @@ class App extends React.Component {
   }
   // a função removeCard foi feita com base no código da aula 11.2
 
+  filterHandler() {
+    const { state: { data, nameFilter, rareFilter, trunfoFilter } } = this;
+
+    if (trunfoFilter) return data.filter((card) => card.cardTrunfo);
+
+    return data.filter((card) => card.cardName.includes(nameFilter))
+      .filter((card) => card.cardRare.startsWith(rareFilter, 0));
+  }
+
   render() {
     const { state: {
       cardName,
@@ -126,10 +138,8 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
-      data,
-      nameFilter,
-      rareFilter,
-    }, onInputChange, onSaveButtonClick, removeCard } = this;
+      trunfoFilter,
+    }, onInputChange, onSaveButtonClick, removeCard, filterHandler } = this;
 
     return (
       <main>
@@ -162,11 +172,10 @@ class App extends React.Component {
         </section>
         <section className="deck">
           <h2>Cartas Salvas</h2>
-          <Deck onInputChange={ onInputChange } />
+          <Deck onInputChange={ onInputChange } disabled={ trunfoFilter } />
           <div className="card" key="card234">
-            {data.filter((card) => card.cardName.includes(nameFilter))
-              .filter((card) => card.cardRare.match(rareFilter))
-              .map((info) => (
+            {
+              filterHandler().map((info) => (
                 <>
                   <Card { ...info } classe="card-deck" />
                   <button
@@ -178,7 +187,8 @@ class App extends React.Component {
                     Excluir
                   </button>
                 </>
-              ))}
+              ))
+            }
           </div>
         </section>
       </main>
