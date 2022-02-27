@@ -48,6 +48,7 @@ class Inputs extends Component {
             cols="30"
             rows="10"
             className="input description"
+            maxLength="100"
           />
         </label>
         <label htmlFor="att-1" className="label">

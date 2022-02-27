@@ -11,7 +11,7 @@
 
 .preview-container {
   align-items: center;
-  background-color: green;
+  background-color: rgb(13, 56, 39);
   display: flex;
   justify-content: center;
   width: 55%;
@@ -42,7 +42,6 @@
 }
 
 .description-card {
-  align-items: center;
   color: aliceblue;
   display: flex;
   flex-wrap: wrap;
@@ -50,6 +49,10 @@
   height: 90px;
   justify-content: center;
   padding: 8px;
+  text-align: center;
+
+  /* transform: rotate(-6.92deg); */
+  width: 100%;
 }
 
 .attr-container {
@@ -79,6 +82,12 @@
   padding: 8px;
 }
 
+h1 {
+  font-size: 45px;
+  padding: 50px 0;
+  text-align: center;
+}
+
 .normal {
   background-color: rgb(10, 10, 151);
 }
@@ -89,4 +98,15 @@
 
 .muito-raro {
   background-color: blueviolet;
+}
+
+.rare-card {
+  display: none;
+}
+
+.logo1 {
+  left: 260px;
+  position: relative;
+  top: -90px;
+  z-index: 2;
 }

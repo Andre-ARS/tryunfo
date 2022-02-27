@@ -173,24 +173,27 @@ class App extends React.Component {
           </div>
         </section>
         <section className="deck">
-          <h2>Cartas Salvas</h2>
-          <Deck onInputChange={ onInputChange } disabled={ trunfoFilter } />
-          <div className="card" key="card234">
-            {
-              filterHandler().map((info) => (
-                <>
-                  <Card { ...info } classe="card-deck" />
-                  <button
-                    type="button"
-                    data-testid="delete-button"
-                    key={ info.cardName + 2 }
-                    onClick={ () => removeCard(info.cardName, info.cardTrunfo) }
-                  >
-                    Excluir
-                  </button>
-                </>
-              ))
-            }
+          <h1>Cartas Salvas</h1>
+          <div className="deck-container">
+            <Deck onInputChange={ onInputChange } disabled={ trunfoFilter } />
+            <div className="card-container" key="card234">
+              {
+                filterHandler().map((info) => (
+                  <section key="kkkkk" className="card-deck">
+                    <Card { ...info } />
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      key={ info.cardName + 2 }
+                      onClick={ () => removeCard(info.cardName, info.cardTrunfo) }
+                      className="delet-btn"
+                    >
+                      Excluir
+                    </button>
+                  </section>
+                ))
+              }
+            </div>
           </div>
         </section>
       </main>
