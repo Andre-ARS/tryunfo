@@ -12,22 +12,64 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      classe,
     } = this.props;
 
     return (
-      <div key={ `${cardName}a` } className={ classe }>
-        <h3 data-testid="name-card" key={ `${cardName}b` }>{cardName}</h3>
-        <img
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-          key={ `${cardName}c` }
-        />
-        <p data-testid="description-card" key={ `${cardName}d` }>{cardDescription}</p>
-        <p data-testid="attr1-card" key={ `${cardName}e` }>{cardAttr1}</p>
-        <p data-testid="attr2-card" key={ `${cardName}f` }>{cardAttr2}</p>
-        <p data-testid="attr3-card" key={ `${cardName}g` }>{cardAttr3}</p>
+      <div key={ `${cardName}a` } className={ `card-preview ${cardRare}` }>
+        <h3
+          data-testid="name-card"
+          key={ `${cardName}b` }
+          className="name-title"
+        >
+          {cardName}
+
+        </h3>
+        <div className="img-container">
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            key={ `${cardName}c` }
+          />
+        </div>
+        <p
+          data-testid="description-card"
+          key={ `${cardName}d` }
+          className="description-card"
+        >
+          {cardDescription}
+
+        </p>
+        <div className="attr-container">
+          <div className="card-attr">
+            <p
+              data-testid="attr1-card"
+              key={ `${cardName}e` }
+            >
+              Attr 1.............................
+              <span>{cardAttr1}</span>
+            </p>
+          </div>
+          <div className="card-attr">
+            <p
+              data-testid="attr2-card"
+              key={ `${cardName}f` }
+            >
+              Attr 2.............................
+              <span>{cardAttr2}</span>
+            </p>
+          </div>
+          <div className="card-attr">
+            <p
+              data-testid="attr3-card"
+              key={ `${cardName}g` }
+            >
+              Attr 3.............................
+              <span>{cardAttr3}</span>
+
+            </p>
+          </div>
+        </div>
         <p data-testid="rare-card" key={ `${cardName}h` }>{cardRare}</p>
         {cardTrunfo
          && (
@@ -53,7 +95,6 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  classe: PropTypes.string.isRequired,
 };
 
 export default Card;

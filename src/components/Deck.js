@@ -29,7 +29,7 @@ class Deck extends Component {
             <option value="todas" key="all">Todas</option>
             <option value="normal" key="normal">Normal</option>
             <option value="raro" key="rare">Raro</option>
-            <option value="muito raro" key="very rare">Muito Raro</option>
+            <option value="muito-raro" key="very rare">Muito Raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-filter">
