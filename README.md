@@ -18,8 +18,12 @@ git clone git@github.com:Andre-ARS/tryunfo.git
 ```bash
 npm install
 ``` 
->Rode o projeto
+### Executando aplicação
+
+Para rodar o front-end:
+
 ```bash
 npm start
-``` 
+```
+
 Link do site com Deploy utilizando Vercel: [Tryunfo](https://tryunfo-ars.vercel.app/)
